@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:waveauth/custom_painter/wave_screen.dart';
+import 'package:waveauth/screen/auth_screen.dart';
+
+import 'package:waveauth/screen/wave_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +12,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home:WaveScreen() ,);
+    return MaterialApp(home:AuthScreen() ,);
   }
 }
