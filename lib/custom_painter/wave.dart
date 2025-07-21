@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:waveauth/util/const_colors.dart';
 
 class SineWavePainter extends CustomPainter {
   final double animationValue;
@@ -12,32 +13,24 @@ class SineWavePainter extends CustomPainter {
     final double baseY = screenHeight;
     final double centerX = size.width / 2;
     final double waveLength = size.width;
-    final int resolution = 500;
-    final Gradient gradient = LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      colors: [
-        Color(0xFF3D5AFE), // Indigo A400 (deep bluish)
-        Color(0xFF00CFFF), // Lighter cyan
-      ],
-    );
+    final int resolution = 1000;
 
     // Wave Layers: back to front
     final waveLayers = [
       {
-        'color': Colors.blue.shade100,
+        'color': AppColors.blue100,
         'minBump': 4.0,
         'maxBump': 16.0,
         'offsetY': 18.0,
       },
       {
-        'color': Colors.blue.shade300,
+        'color': AppColors.blue300,
         'minBump': 6.0,
         'maxBump': 24.0,
         'offsetY': 9.0,
       },
       {
-        'gradient': gradient, // ✅ Pass the gradient itself
+        'gradient': AppGradients.mainGradient, // ✅ Pass the gradient itself
         'minBump': 8.0,
         'maxBump': 32.0,
         'offsetY': 0.0,

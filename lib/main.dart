@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waveauth/config/app_themes.dart';
 import 'package:waveauth/screen/auth_screen.dart';
 
 import 'package:waveauth/screen/wave_screen.dart';
@@ -12,6 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home:AuthScreen() ,);
+    return MaterialApp(
+      title: 'WaveAuth',
+      theme: AppTheme.lightTheme,
+      debugShowCheckedModeBanner: false,
+      home: AuthScreen(authType: AuthType.entry),
+    );
   }
 }
