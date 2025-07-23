@@ -19,41 +19,45 @@ class AuthEntry extends StatefulWidget {
 }
 
 class _AuthEntryState extends State<AuthEntry> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24),
-
-      height: 300,
-      child: Column(
-        children: [
-          SizedBox(height: 40),
-
-          Text(
-            ConstString.WelcomeString,
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.w400,
-              fontStyle: FontStyle.italic,
-            ),
+ @override
+Widget build(BuildContext context) {
+  return LayoutBuilder(
+    builder: (context, constraints) {
+      return ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: constraints.maxHeight,
+        ),
+        child: IntrinsicHeight(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const SizedBox(height: 40),
+              Text(
+                ConstString.WelcomeString,
+                style: const TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+              const SizedBox(height: 80),
+              GradientButton(
+                buttonText: ConstString.CreateAccountString,
+                onPressed: widget.onCreateAccountPressed,
+              ),
+              const SizedBox(height: 10),
+              GradientButton(
+                buttonText: ConstString.LoginString,
+                onPressed: widget.onLoginPressed,
+                isInvert: true,
+              ),
+              const SizedBox(height: 10),
+              SocialSignInWidget(authType: AuthType.entry),
+            ],
           ),
-
-          SizedBox(height: 80),
-
-          GradientButton(
-            buttonText: ConstString.CreateAccountString,
-            onPressed: widget.onCreateAccountPressed,
-          ),
-          const SizedBox(height: 10),
-          GradientButton(
-            buttonText: ConstString.LoginString,
-            onPressed: widget.onLoginPressed,
-            isInvert: true,
-          ),
-          SizedBox(height: 10,),
-          SocialSignInWidget(authType: AuthType.entry,),
-        ],
-      ),
-    );
-  }
+        ),
+      );
+    },
+  );
+}
 }

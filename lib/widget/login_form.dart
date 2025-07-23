@@ -3,6 +3,7 @@ import 'package:waveauth/screen/otp_screen.dart';
 import 'package:waveauth/util/const_string.dart';
 import 'package:waveauth/widget/gradent_button.dart';
 import 'package:waveauth/widget/gradient_checkbox.dart';
+import 'package:waveauth/widget/page_route_transiton.dart';
 
 class LoginForm extends StatefulWidget {
   final GlobalKey<FormState> formkey;
@@ -97,7 +98,7 @@ class _LoginFormState extends State<LoginForm> {
               }
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => OtpScreen()),
+                CustomPageTransition.slideFromLeft(OtpScreen())
               );
             },
           ),
