@@ -25,4 +25,11 @@ class ConstString {
   static const String signUp = "Sign Up";
   static const String orDividerText = "OR";
   static const String signInWithAnotherAccount = "Sign in with another account";
+  // Otp Screen widget
+  static const String otpRegister = "Registration";
+  static const String enterCodeToSent = "Enter the Code sent to";
+  static const String otpNumber = "+3126";
+  static const String idintRecivedCode = "I Dont' receive the code";
+  static const String resndOtpCode = "Resend Code";
+  static const String verifyCode = "Verify";
 }

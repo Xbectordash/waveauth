@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waveauth/screen/otp_screen.dart';
 import 'package:waveauth/util/const_string.dart';
 import 'package:waveauth/widget/gradent_button.dart';
 import 'package:waveauth/widget/gradient_checkbox.dart';
@@ -71,12 +72,16 @@ class _LoginFormState extends State<LoginForm> {
                 onChanged: (val) => setState(() => _isCheckd = val),
               ),
               const SizedBox(width: 10),
-              const Text(ConstString.rememberMe, style: TextStyle(color: Colors.grey)),
+              const Text(
+                ConstString.rememberMe,
+                style: TextStyle(color: Colors.grey),
+              ),
               const Spacer(),
               TextButton(
                 onPressed: () {},
                 child: const Text(ConstString.forgotPassword),
-              )
+
+              ),
             ],
           ),
 
@@ -90,6 +95,10 @@ class _LoginFormState extends State<LoginForm> {
                 debugPrint('Email: ${widget.emailController.text}');
                 debugPrint('Password: ${widget.passWordController.text}');
               }
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => OtpScreen()),
+              );
             },
           ),
         ],
@@ -97,3 +106,4 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 }
+

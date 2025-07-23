@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart'; // Make sure you have this in pubspec.yaml
 import 'package:waveauth/util/const_colors.dart';
 import 'package:waveauth/util/const_text_style.dart';
 
 class AppTheme {
   AppTheme._();
+
+  static final defaultPinTheme = PinTheme(
+    width: 60,
+    height: 64,
+    textStyle: AppTextStyles.heading.copyWith(
+      color: AppColors.textPrimary,
+      fontSize: 20,
+    ),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(color: AppColors.border),
+    ),
+  );
 
   static ThemeData get lightTheme {
     return ThemeData(
@@ -31,8 +46,6 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(foregroundColor: AppColors.textTernary),
       ),
-
-      /// 👇 Add this section for TextField/TextFormField theme
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.grey[100],
@@ -50,14 +63,8 @@ class AppTheme {
           borderSide: BorderSide(color: AppColors.primary, width: 2),
         ),
         hintStyle: AppTextStyles.body.copyWith(color: Colors.grey),
-        labelStyle: AppTextStyles.subheading.copyWith(color: Colors.grey)
+        labelStyle: AppTextStyles.subheading.copyWith(color: Colors.grey),
       ),
-
-      // checkboxTheme: CheckboxThemeData(
-      //   shape: CircleBorder(
-          
-      //   )
-      // )
     );
   }
 }
