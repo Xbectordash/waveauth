@@ -7,8 +7,10 @@ WaveAuth is a beautifully designed Flutter authentication module featuring a dyn
 ## ✨ Features
 
 - **Dynamic Wave Animation**: A stunning, multi-layered sine wave animation creates a fluid and visually appealing background.
+- **OTP Verification**: Secure one-time password verification screen with custom painter for an engaging user experience.
 - **State-Managed Auth Flow**: A single `AuthScreen` manages the UI state between the initial entry screen and the login screen, preventing nested navigation stacks.
 - **Custom Gradient Widgets**: Includes custom-built, reusable widgets like `GradientButton` and `GradientCircularCheckbox` that match the app's aesthetic.
+- **Particle Effects**: Beautiful sprinkle animations that enhance the visual appeal of the authentication flow.
 - **Floating Navigation**: A floating action button provides intuitive back navigation from the login view to the entry view.
 - **Centralized Theming & Constants**: Project-wide colors, strings, and text styles are centralized in the `util` directory for easy maintenance and consistency.
 - **Reusable Components**: Widgets like `LoginForm` and `SocialSignInWidget` are modular and can be easily customized.
@@ -26,8 +28,9 @@ lib/
 │   └── app_themes.dart     # Material theme and styling
 |
 ├── custom_painter/
-│   ├── sprinkel.dart     # Custom painter for particle effects
-│   └── wave.dart         # Custom painter for the sine wave animation
+│   ├── otp_screen_painter.dart  # Custom painter for OTP screen background
+│   ├── sprinkel.dart            # Custom painter for particle effects
+│   └── wave.dart                # Custom painter for the sine wave animation
 |
 ├── screen/
 │   ├── auth_entry.dart   # Initial screen with Login/Create Account buttons
@@ -76,12 +79,21 @@ lib/
 
 ## 🎨 Key Components
 
-### Wave Animation
+### Custom Painters
 
+#### Wave Animation
 The background animation is created by stacking multiple `SineWavePainter` instances in `WaveScreen`. Each layer has a slightly different color, speed, and amplitude, creating a parallax effect. The animation is driven by an `AnimationController` that updates the UI continuously.
+
+#### OTP Screen Painter
+The OTP verification screen features a custom painter that creates an elegant background with subtle animations and visual elements that enhance the user experience during the verification process.
+
+#### Particle Effects
+Interactive particle effects are implemented using a custom painter that creates a dynamic, responsive background that reacts to user interactions.
 
 For a deep dive into the mathematics behind this animation, check out our Medium article: [Deconstructing a Dynamic Wave Animation in Flutter: A Mathematical Deep Dive](https://medium.com/@vectordash755/deconstructing-a-dynamic-wave-animation-in-flutter-a-mathematical-deep-dive-f80762e2ee96).
 
 ### Authentication Flow
 
 The `AuthScreen` widget acts as a state machine. It holds an `AuthType` enum (`entry` or `login`) in its state. Instead of pushing new screens onto the navigation stack, UI components trigger callbacks that call `setState` on `AuthScreen`, which then rebuilds its body to show either the `AuthEntry` or `LoginScreen` widget. This creates a smooth, efficient, and predictable navigation flow.
+
+
